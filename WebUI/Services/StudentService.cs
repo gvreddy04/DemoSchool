@@ -64,7 +64,7 @@ public class StudentService : BaseService, IStudentService
         return bool.TryParse(studentId, out bool id) ? id : id;
     }
 
-    public async Task<bool> UpdateStudentAddressAsync(StudentAddress address)
+    public async Task<bool> UpdateStudentAddressByOidAsync(StudentAddress address)
     {
         string url = $"{BaseUrl}/api/students/address";
         var data = _mapper.Map<RequestModels.Students.UpdateStudent.StudentAddressDto>(address);

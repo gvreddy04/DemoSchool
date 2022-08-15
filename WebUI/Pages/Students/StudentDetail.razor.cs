@@ -244,7 +244,7 @@ public partial class StudentDetail : ComponentBase, IDisposable
                 ZipCode = studentAddressEditForm?.ZipCode
             };
 
-            var isUpdateSuccess = await _studentService.UpdateStudentAddressAsync(address);
+            var isUpdateSuccess = await _studentService.UpdateStudentAddressByOidAsync(address);
 
             if (isUpdateSuccess)
                 ShowSuccessToastMessage("Student address updated.");

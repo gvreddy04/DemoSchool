@@ -1,7 +1,4 @@
-﻿using WebUI.Models;
-using WebUI.ViewModels;
-
-namespace WebUI.Services;
+﻿namespace WebUI.Services;
 
 public interface IStudentService
 {
@@ -9,5 +6,5 @@ public interface IStudentService
     Task<StudentVm> GetStudentByIdAsync(int id);
     Task<IEnumerable<Student>> GetStudentsAsync();
     Task<bool> UpdateStudentByOidAsync(Student student);
-    Task<bool> UpdateStudentAddressAsync(StudentAddress address);
+    Task<bool> UpdateStudentAddressByOidAsync(StudentAddress address);
 }
