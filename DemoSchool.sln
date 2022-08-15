@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "WebUI\WebUI.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{A0F05192-7DE1-48F5-B28A-86EBD34069AB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2D875643-7DDB-45C7-B96B-ABC8983A1EAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8AE98050-A80D-4484-AE2C-0D734D642669}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +28,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3C09A087-E2AA-46F4-87F5-D13F0DE74747} = {2D875643-7DDB-45C7-B96B-ABC8983A1EAA}
+		{A0F05192-7DE1-48F5-B28A-86EBD34069AB} = {2D875643-7DDB-45C7-B96B-ABC8983A1EAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {428E5133-4D61-429F-B328-73A59AFB4C31}

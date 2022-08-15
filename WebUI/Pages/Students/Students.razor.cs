@@ -1,6 +1,4 @@
-﻿using WebUI.HttpInterceptor;
-
-namespace WebUI.Pages.Students;
+﻿namespace WebUI.Pages.Students;
 
 public partial class Students : ComponentBase, IDisposable
 {
@@ -10,16 +8,10 @@ public partial class Students : ComponentBase, IDisposable
     #region Properties
 
     [Inject] private IStudentService _studentService { get; set; } = null!;
-    [Inject] private HttpInterceptorService _interceptor { get; set; } = null!;
 
     #endregion
 
     #region Methods
-
-    protected override void OnInitialized()
-    {
-        _interceptor.RegisterEvent();
-    }
 
     private async Task<GridDataProviderResult<Student>> StudentsDataProvider(GridDataProviderRequest<Student> request)
     {
@@ -46,7 +38,7 @@ public partial class Students : ComponentBase, IDisposable
 
     public void Dispose()
     {
-        _interceptor.DisposeEvent();
+        // dispose
     }
 
     #endregion

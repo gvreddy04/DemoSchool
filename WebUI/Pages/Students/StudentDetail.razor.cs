@@ -1,6 +1,4 @@
-﻿using WebUI.HttpInterceptor;
-
-namespace WebUI.Pages.Students;
+﻿namespace WebUI.Pages.Students;
 
 public partial class StudentDetail : ComponentBase, IDisposable
 {
@@ -35,7 +33,6 @@ public partial class StudentDetail : ComponentBase, IDisposable
     [Inject] private IStudentService _studentService { get; set; } = null!;
     [Inject] private NavigationManager _navigationManager { get; set; }
     [Inject] private PreloadService _preloadService { get; set; }
-    [Inject] private HttpInterceptorService _interceptor { get; set; } = null!;
 
     #endregion Properties
 
@@ -45,8 +42,6 @@ public partial class StudentDetail : ComponentBase, IDisposable
     {
         try
         {
-            _interceptor.RegisterEvent();
-
             _preloadService?.Show();
 
             studentEditContext = new(studentEditForm);
@@ -292,7 +287,7 @@ public partial class StudentDetail : ComponentBase, IDisposable
 
     public void Dispose()
     {
-        _interceptor.DisposeEvent();
+        // dispose
     }
 }
 
