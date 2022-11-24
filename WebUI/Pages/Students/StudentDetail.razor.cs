@@ -283,12 +283,12 @@ public partial class StudentDetail : ComponentBase, IDisposable
 
     #endregion Toast Messages
 
-    #endregion Methods
-
     public void Dispose()
     {
         // dispose
     }
+
+    #endregion Methods
 }
 
 
