@@ -232,12 +232,7 @@
     </div>
 </div>
 
-<ConfirmDialog @ref="confirmDialog"
-               Title="Are you sure you want to create the student?"
-               Message1="This will save the details entered in the form."
-               Message2="Do you want to proceed?"
-               OnYes="OnConfirmationYesAsync"
-               OnNo="OnConfirmationNo"></ConfirmDialog>
+<ConfirmDialog @ref="confirmDialog" />
 
 <Modal @ref="modal" UseStaticBackdrop="true" OnHidden="OnModalHidden">
     <HeaderTemplate>

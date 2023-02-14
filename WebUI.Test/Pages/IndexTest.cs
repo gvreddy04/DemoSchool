@@ -49,11 +49,11 @@ public class IndexTest
 
         // Assert
         var alertDiv = cut.Find(".alert");
-        alertDiv.MarkupMatches("<div class=\"alert alert-secondary mt-4\"></div>");
-        //alertDiv.MarkupMatches("<div class=\"alert alert-secondary mt-4\" diff:ignoreChildren></div>");
-        //alertDiv.MarkupMatches("<div class:ignore diff:ignoreChildren></div>");
-        //alertDiv.MarkupMatches("<div diff:ignoreAttributes diff:ignoreChildren></div>");
-        //alertDiv.MarkupMatches("<div diff:ignore></div>");
+        alertDiv.MarkupMatches("<div class=\"alert alert-secondary mt-4\"></div>"); // fail
+        //alertDiv.MarkupMatches("<div class=\"alert alert-secondary mt-4\" diff:ignoreChildren></div>"); // success
+        //alertDiv.MarkupMatches("<div class:ignore diff:ignoreChildren></div>"); // success
+        //alertDiv.MarkupMatches("<div diff:ignoreAttributes diff:ignoreChildren></div>"); // success
+        //alertDiv.MarkupMatches("<div diff:ignore></div>"); // success
     }
 
     #endregion  Semantic comparison

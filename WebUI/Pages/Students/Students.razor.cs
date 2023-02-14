@@ -7,7 +7,9 @@ public partial class Students : ComponentBase, IDisposable
 
     #region Properties
 
-    [Inject] private IStudentService _studentService { get; set; } = null!;
+    [Inject] private IStudentService _studentService { get; set; } = default!;
+
+    [Inject] private PreloadService _preloadService { get; set; } = default!;
 
     #endregion
 
@@ -17,6 +19,8 @@ public partial class Students : ComponentBase, IDisposable
     {
         try
         {
+            _preloadService.Show();
+
             var result = await _studentService.GetStudentsAsync();
             return new GridDataProviderResult<Student> { Data = result, TotalCount = result.Count() };
         }
@@ -31,6 +35,10 @@ public partial class Students : ComponentBase, IDisposable
         catch (Exception ex)
         {
             throw; // TODO: update this
+        }
+        finally
+        {
+            _preloadService.Hide();
         }
 
         return (new GridDataProviderResult<Student> { Data = new List<Student>(), TotalCount = 0 });

@@ -30,9 +30,10 @@ public partial class StudentDetail : ComponentBase, IDisposable
 
     [Parameter] public int StudentId { get; set; }
 
-    [Inject] private IStudentService _studentService { get; set; } = null!;
-    [Inject] private NavigationManager _navigationManager { get; set; }
-    [Inject] private PreloadService _preloadService { get; set; }
+    [Inject] private IStudentService _studentService { get; set; } = default!;
+    [Inject] private NavigationManager _navigationManager { get; set; } = default!;
+    [Inject] private PreloadService _preloadService { get; set; } = default!;
+    [Inject] private ToastService _toastService { get; set; } = default!;
 
     #endregion Properties
 
@@ -193,11 +194,11 @@ public partial class StudentDetail : ComponentBase, IDisposable
             var isUpdateSuccess = await _studentService.UpdateStudentByOidAsync(student);
 
             if (isUpdateSuccess)
-                ShowSuccessToastMessage("Student basic information updated.");
+                _toastService.Notify(new ToastMessage { Title = "Student Details", Message = "Student basic information updated.", Type = ToastType.Success });
         }
         catch
         {
-            ShowErrorToastMessage("An error occurred while saving the student's basic information. Please try again.");
+            _toastService.Notify(new ToastMessage { Title = "Student Details", Message = "An error occurred while saving the student's basic information. Please try again.", Type = ToastType.Danger });
         }
         finally
         {
@@ -247,11 +248,11 @@ public partial class StudentDetail : ComponentBase, IDisposable
             var isUpdateSuccess = await _studentService.UpdateStudentAddressByOidAsync(address);
 
             if (isUpdateSuccess)
-                ShowSuccessToastMessage("Student address updated.");
+                _toastService.Notify(new ToastMessage { Title = "Student Details", Message = "Student address updated.", Type = ToastType.Success });
         }
         catch
         {
-            ShowErrorToastMessage("An error occurred while saving the student's address. Please try again.");
+            _toastService.Notify(new ToastMessage { Title = "Student Details", Message = "An error occurred while saving the student's address. Please try again.", Type = ToastType.Danger });
         }
         finally
         {
@@ -290,7 +291,6 @@ public partial class StudentDetail : ComponentBase, IDisposable
 
     #endregion Methods
 }
-
 
 public class StudentEditForm
 {

@@ -88,7 +88,45 @@ public partial class CreateStudent : ComponentBase
         }
     }
 
-    private void HandleValidSubmit() => confirmDialog?.Show();
+    private async Task HandleValidSubmit()
+    {
+        var confirmation = await confirmDialog?.ShowAsync(
+            title: "Are you sure you want to create the student?", 
+            message1: "This will save the details entered in the form.", 
+            message2: "Do you want to proceed?");
+
+        if (confirmation)
+        {
+            if (editContext is null || !editContext.Validate())
+                return;
+
+            var student = new Student
+            {
+                StudentName = studentForm.StudentName,
+                GaurdianName = studentForm.GaurdianName,
+                Gender = (int)studentForm.Gender,
+                DOB = new(studentForm.Year, studentForm.Month, studentForm.Day),
+                CountryCode = studentForm.CountryCode,
+                PhoneNumber = studentForm.PhoneNumber,
+                Email = studentForm.Email
+            };
+
+            var address = new StudentAddress
+            {
+                AddressLine1 = studentForm.Address?.AddressLine1,
+                AddressLine2 = studentForm.Address?.AddressLine2,
+                AddressLine3 = studentForm.Address?.AddressLine3,
+                City = studentForm.Address?.City,
+                State = studentForm.Address?.State,
+                Country = studentForm.Address?.Country,
+                ZipCode = studentForm.Address?.ZipCode
+            };
+
+            studentId = await _studentService.CreateStudentAsync(student, address);
+
+            await modal?.ShowAsync();
+        }
+    }
 
     private void HandleInvalidSubmit() => formInvalid = true;
 
@@ -110,44 +148,6 @@ public partial class CreateStudent : ComponentBase
             days.Add(i);
         }
     }
-
-    #region Confirmation
-
-    private async Task OnConfirmationYesAsync()
-    {
-        if (editContext is null || !editContext.Validate())
-            return;
-
-        var student = new Student
-        {
-            StudentName = studentForm.StudentName,
-            GaurdianName = studentForm.GaurdianName,
-            Gender = (int)studentForm.Gender,
-            DOB = new(studentForm.Year, studentForm.Month, studentForm.Day),
-            CountryCode = studentForm.CountryCode,
-            PhoneNumber = studentForm.PhoneNumber,
-            Email = studentForm.Email
-        };
-
-        var address = new StudentAddress
-        {
-            AddressLine1 = studentForm.Address?.AddressLine1,
-            AddressLine2 = studentForm.Address?.AddressLine2,
-            AddressLine3 = studentForm.Address?.AddressLine3,
-            City = studentForm.Address?.City,
-            State = studentForm.Address?.State,
-            Country = studentForm.Address?.Country,
-            ZipCode = studentForm.Address?.ZipCode
-        };
-
-        studentId = await _studentService.CreateStudentAsync(student, address);
-
-        await modal?.ShowAsync();
-    }
-
-    private void OnConfirmationNo() => confirmDialog?.Hide();
-
-    #endregion Confirmation
 
     #region Modal
 
