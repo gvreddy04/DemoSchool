@@ -21,7 +21,13 @@
     </div>
 </div>
 
-<Grid TItem="Student" class="table table-hover" DataProvider="StudentsDataProvider" PageSize="15">
+<Grid TItem="Student"
+      Class="table table-hover table-bordered table-striped"
+      DataProvider="StudentsDataProvider"
+      AllowPaging="true"
+      PaginationAlignment="Alignment.End"
+      PageSize="15">
+
     <GridColumn TItem="Student" Context="student" HeaderText="Student">
         <a href="/students/@student.StudentId">@student.StudentName</a>
     </GridColumn>
@@ -37,4 +43,5 @@
     <GridColumn TItem="Student" Context="student" HeaderText="Phone Number">
         +@student.CountryCode @student.PhoneNumber
     </GridColumn>
+
 </Grid>
