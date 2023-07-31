@@ -1,4 +1,6 @@
-﻿namespace DemoSchool.WebUI.Test.Pages.Students;
+﻿using DemoSchool.WebUI.ViewModels;
+
+namespace DemoSchool.WebUI.Test.Pages.Students;
 
 public class StudentsTest : TestContext
 {
@@ -15,8 +17,8 @@ public class StudentsTest : TestContext
     public void StudentsComponentRendersCorrectly()
     {
         // Arrange
-        List<Student> students = new();
-        _studentServiceMock.Setup(x => x.GetStudentsAsync()).ReturnsAsync(students);
+        StudentsVm studentsVm = new() { Data = new List<Student>(), Count = 0 };
+        _studentServiceMock.Setup(x => x.GetStudentsAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(studentsVm);
 
         // Act
         var cut = this.RenderComponent<WebUI.Pages.Students.Students>();
@@ -45,7 +47,8 @@ public class StudentsTest : TestContext
                 Oid = Guid.NewGuid()
             }
         };
-        _studentServiceMock.Setup(x => x.GetStudentsAsync()).ReturnsAsync(students);
+        StudentsVm studentsVm = new() { Data = students, Count = 1 };
+        _studentServiceMock.Setup(x => x.GetStudentsAsync(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(studentsVm);
 
         // Act
         var cut = this.RenderComponent<WebUI.Pages.Students.Students>();
