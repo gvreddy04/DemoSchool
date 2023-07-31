@@ -2,10 +2,10 @@
 
 public partial class Students : ComponentBase, IDisposable
 {
-    #region Members
+    #region Fields and Constants
     #endregion
 
-    #region Properties
+    #region Properties, Indexers
 
     [Inject] private IStudentService _studentService { get; set; } = default!;
 
@@ -21,8 +21,8 @@ public partial class Students : ComponentBase, IDisposable
         {
             _preloadService.Show();
 
-            var result = await _studentService.GetStudentsAsync();
-            return new GridDataProviderResult<Student> { Data = result, TotalCount = result.Count() };
+            var result = await _studentService.GetStudentsAsync(request.PageNumber, request.PageSize);
+            return new GridDataProviderResult<Student> { Data = result.Data, TotalCount = result.Count };
         }
         catch (NotSupportedException ex)
         {

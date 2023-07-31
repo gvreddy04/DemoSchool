@@ -48,10 +48,10 @@ public class StudentService : BaseService, IStudentService
         return await _httpClient.GetFromJsonAsync<StudentVm>(url);
     }
 
-    public async Task<IEnumerable<Student>> GetStudentsAsync()
+    public async Task<StudentsVm> GetStudentsAsync(int page, int size)
     {
-        string url = $"{BaseUrl}/api/students";
-        return await _httpClient.GetFromJsonAsync<IEnumerable<Student>>(url);
+        string url = $"{BaseUrl}/api/students?page={page}&size={size}";
+        return await _httpClient.GetFromJsonAsync<StudentsVm>(url);
     }
 
     public async Task<bool> UpdateStudentByOidAsync(Student student)

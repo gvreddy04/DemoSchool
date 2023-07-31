@@ -16,10 +16,10 @@ public class StudentsController : ControllerBase
     }
 
     [HttpGet()]
-    public async Task<IActionResult> GetStudentsAsync()
+    public async Task<IActionResult> GetStudentsAsync(int page, int size)
     {
-        var result = await _studentRepository.GetStudentsAsync();
-        return Ok(result);
+        var result = await _studentRepository.GetStudentsAsync(page, size);
+        return Ok(new { Data = result.Students, Count = result.Count });
     }
 
     [HttpGet("{id:int}")]

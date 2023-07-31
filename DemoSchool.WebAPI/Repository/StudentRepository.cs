@@ -76,20 +76,26 @@ public class StudentRepository : IStudentRepository
         }
     }
 
-    public async Task<IEnumerable<Student>> GetStudentsAsync()
+    public async Task<(IEnumerable<Student> Students, int Count)> GetStudentsAsync(int page, int size)
     {
         string procedureName = "[dbo].[GetStudents]";
         try
         {
             using (var connection = _applicationConnection.GetConnection())
             {
-                return await connection.QueryAsync<Student>(procedureName, commandType: CommandType.StoredProcedure);
+                var param = new { PageNumber = page, PageSize = size };
+                var result = await connection.QueryMultipleAsync(procedureName, param: param, commandType: CommandType.StoredProcedure);
+                
+                var students = await result.ReadAsync<Student>();
+                var count = await result.ReadFirstOrDefaultAsync<int>();
+
+                return (students, count);
             }
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, $"ErrorMessage={ex.Message}, Source=StudentRepository.GetStudentsAsync()");
-            return new List<Student>();
+            return (new List<Student>(), 0);
         }
     }
 
