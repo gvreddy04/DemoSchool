@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "WebUI\WebUI.csproj", "{3C09A087-E2AA-46F4-87F5-D13F0DE74747}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoSchool.WebUI", "DemoSchool.WebUI\DemoSchool.WebUI.csproj", "{3C09A087-E2AA-46F4-87F5-D13F0DE74747}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{A0F05192-7DE1-48F5-B28A-86EBD34069AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoSchool.WebAPI", "DemoSchool.WebAPI\DemoSchool.WebAPI.csproj", "{A0F05192-7DE1-48F5-B28A-86EBD34069AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2D875643-7DDB-45C7-B96B-ABC8983A1EAA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8AE98050-A80D-4484-AE2C-0D734D642669}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI.Test", "WebUI.Test\WebUI.Test.csproj", "{7F540D20-F262-4289-9E65-E00F4C6E7D4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoSchool.WebUI.Test", "DemoSchool.WebUI.Test\DemoSchool.WebUI.Test.csproj", "{7F540D20-F262-4289-9E65-E00F4C6E7D4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,12 @@
+﻿global using AutoMapper;
+global using Dapper;
+global using DemoSchool.WebAPI;
+global using DemoSchool.WebAPI.Common.Mappings;
+global using DemoSchool.WebAPI.Models;
+global using DemoSchool.WebAPI.Repository;
+global using DemoSchool.WebAPI.Repository.Interfaces;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Data.SqlClient;
+global using Microsoft.Net.Http.Headers;
+global using System.Data;
+global using System.Reflection;
