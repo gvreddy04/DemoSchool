@@ -94,7 +94,7 @@ public class StudentRepository : IStudentRepository
         catch (Exception ex)
         {
             _logger.LogError(ex, $"ErrorMessage={ex.Message}, Source=StudentRepository.GetStudentsAsync()");
-            return null;
+            return new List<Student>();
         }
     }
 
