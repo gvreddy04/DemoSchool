@@ -326,6 +326,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[GetStudents]
+(
+	@PageNumber INT
+	, @PageSize INT
+)
 AS
 BEGIN
 
@@ -346,6 +350,12 @@ BEGIN
 			, [Oid]
 
 	from	[dbo].[Student] AS S
+	ORDER BY StudentId ASC
+    OFFSET ((@PageNumber - 1) * @PageSize)  ROWS 
+    FETCH NEXT @PageSize ROWS ONLY;
+
+	SELECT	COUNT(*) AS [Count]
+	FROM	[dbo].[Student] AS S
 
 END
 GO

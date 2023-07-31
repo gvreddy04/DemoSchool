@@ -1,4 +1,4 @@
-﻿namespace DemoSchool.WebUI.Services;
+﻿ namespace DemoSchool.WebUI.Services;
 
 public class BaseService
 {
