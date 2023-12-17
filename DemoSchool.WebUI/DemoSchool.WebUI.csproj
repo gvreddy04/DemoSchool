@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazor.Bootstrap" Version="1.10.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DemoSchool.AspireApp\DemoSchool.AspireApp.ServiceDefaults\DemoSchool.AspireApp.ServiceDefaults.csproj" />
   </ItemGroup>
 
