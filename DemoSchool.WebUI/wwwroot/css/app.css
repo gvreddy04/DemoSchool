@@ -1,4 +1,4 @@
-﻿html, body {
+html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -14,6 +14,10 @@ a, .btn-link {
     color: #fff;
     background-color: #1b6ec2;
     border-color: #1861ac;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 .content {
@@ -61,85 +65,39 @@ a, .btn-link {
         content: "An error has occurred."
     }
 
-
-/* theme */
-.page-header {
-    border-bottom: 0.0625rem solid rgba(231,234,243,.7);
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-}
-
-.profile-cover {
+.loading-progress {
     position: relative;
-    height: 7.5rem;
-    padding: 1rem 1rem;
-    border-radius: 0.75rem;
+    display: block;
+    width: 8rem;
+    height: 8rem;
+    margin: 20vh auto 1rem auto;
 }
 
-.profile-cover-img-wrapper {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 7.5rem;
-    background-color: #e7eaf3;
-    border-radius: 0.75rem;
-}
-
-.profile-cover-img {
-    width: 100%;
-    height: 7.5rem;
-    -o-object-fit: cover;
-    object-fit: cover;
-    vertical-align: top;
-    border-radius: 0.75rem;
-}
-
-.avatar {
-    position: relative;
-    display: inline-block;
-    width: 2.625rem;
-    height: 2.625rem;
-    border-radius: 0.5rem;
-}
-
-    .avatar:not(img) {
-        background-color: #fff;
+    .loading-progress circle {
+        fill: none;
+        stroke: #e0e0e0;
+        stroke-width: 0.6rem;
+        transform-origin: 50% 50%;
+        transform: rotate(-90deg);
     }
 
-.profile-cover-avatar {
-    display: -ms-flexbox;
-    display: flex;
-    background-color: #fff;
-    border: 0.25rem solid #fff;
-    margin: -6.3rem auto 0.5rem auto;
+        .loading-progress circle:last-child {
+            stroke: #1b6ec2;
+            stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
+            transition: stroke-dasharray 0.05s ease-in-out;
+        }
+
+.loading-progress-text {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
 }
 
-.avatar-xxl, .avatar-xxl .avatar-initials {
-    width: 7.875rem;
-    height: 7.875rem;
-}
+    .loading-progress-text:after {
+        content: var(--blazor-load-percentage-text, "Loading");
+    }
 
-.avatar-circle {
-    border-radius: 50%;
-}
-
-.avatar-img {
-    max-width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
-    border-radius: 0.5rem;
-}
-
-.avatar-xxl .avatar-img {
-    width: 7.875rem;
-}
-
-.avatar-circle .avatar, .avatar-circle .avatar-img, .avatar-circle .avatar-initials {
-    border-radius: 50%;
-}
-
-.avatar-xxl .avatar-img {
-    width: 7.875rem;
+code {
+    color: #c02d76;
 }
