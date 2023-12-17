@@ -18,4 +18,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DemoSchool.AspireApp\DemoSchool.AspireApp.ServiceDefaults\DemoSchool.AspireApp.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>

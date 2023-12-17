@@ -1,4 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddServiceDefaults();
 {
     // Add services to the container.
     builder.Services.AddApplicationServices(builder.Configuration);
@@ -27,6 +29,8 @@ var builder = WebApplication.CreateBuilder(args);
 }
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 {
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
