@@ -1,7 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
 {
-    builder.AddServiceDefaults();
-
     // Add services to the container.
     builder.Services.AddApplicationServices(builder.Configuration);
     builder.Services.AddApplicationInsightsTelemetry(); // TODO: Add application insights instrumentation key in appsettings.json
@@ -30,8 +28,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 {
-    app.MapDefaultEndpoints();
-
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
