@@ -20,14 +20,14 @@ public class StudentApiClient(HttpClient _httpClient, IMapper _mapper)
             Address = _mapper.Map<RequestModels.Students.CreateStudent.StudentAddressDto>(address)
         };
 
-        var response = await _httpClient.PostAsJsonAsync("/students", data);
+        var response = await _httpClient.PostAsJsonAsync("/api/students", data);
         var studentId = await response.Content.ReadAsStringAsync(); // returns studentId
         return int.TryParse(studentId, out int id) ? id : id;
     }
 
     public async Task<StudentVm> GetStudentByIdAsync(int id)
     {
-        return await _httpClient.GetFromJsonAsync<StudentVm>($"/students/{id}");
+        return await _httpClient.GetFromJsonAsync<StudentVm>($"/api/students/{id}");
     }
 
     public async Task<StudentsVm> GetStudentsAsync(int page, int size)
@@ -39,7 +39,7 @@ public class StudentApiClient(HttpClient _httpClient, IMapper _mapper)
     {
         var data = _mapper.Map<RequestModels.Students.UpdateStudent.StudentDto>(student);
 
-        var response = await _httpClient.PutAsJsonAsync("/students", data);
+        var response = await _httpClient.PutAsJsonAsync("/api/students", data);
         var studentId = await response.Content.ReadAsStringAsync(); // returns studentId
         return bool.TryParse(studentId, out bool id) ? id : id;
     }
@@ -48,7 +48,7 @@ public class StudentApiClient(HttpClient _httpClient, IMapper _mapper)
     {
         var data = _mapper.Map<RequestModels.Students.UpdateStudent.StudentAddressDto>(address);
 
-        var response = await _httpClient.PutAsJsonAsync("/students/address", data);
+        var response = await _httpClient.PutAsJsonAsync("/api/students/address", data);
         var studentId = await response.Content.ReadAsStringAsync(); // returns studentId
         return bool.TryParse(studentId, out bool id) ? id : id;
     }
