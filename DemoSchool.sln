@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoSchool.WebAPI", "DemoSc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2D875643-7DDB-45C7-B96B-ABC8983A1EAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoSchool.AspireApp.AppHost", "DemoSchool.AspireApp\DemoSchool.AspireApp.AppHost\DemoSchool.AspireApp.AppHost.csproj", "{6FA1B78A-428C-4B7B-A780-5253FEA2D791}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoSchool.AspireApp.AppHost", "DemoSchool.AspireApp\DemoSchool.AspireApp.AppHost\DemoSchool.AspireApp.AppHost.csproj", "{6FA1B78A-428C-4B7B-A780-5253FEA2D791}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoSchool.AspireApp.ServiceDefaults", "DemoSchool.AspireApp\DemoSchool.AspireApp.ServiceDefaults\DemoSchool.AspireApp.ServiceDefaults.csproj", "{096C9494-62EC-4E3B-9D2F-A0C1BA1250AB}"
 EndProject

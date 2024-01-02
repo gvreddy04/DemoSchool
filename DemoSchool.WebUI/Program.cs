@@ -1,14 +1,17 @@
+using DemoSchool.WebUI;
 using DemoSchool.WebUI.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
-builder.Services.AddBlazorBootstrap();
-
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddWebUIServices(); // WebUI Services
+builder.Services.AddBlazorBootstrap(); // Blazor.Bootstrap
+
 
 var app = builder.Build();
 
